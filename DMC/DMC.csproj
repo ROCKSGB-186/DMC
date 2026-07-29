@@ -1,0 +1,890 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
+  <Import Project="..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86.v8-xfa.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{31AADBE2-58F0-43A6-A835-F9AB0D572EC9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>DMC</RootNamespace>
+    <AssemblyName>DMC</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>118</ApplicationRevision>
+    <ApplicationVersion>2.26.212.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>82E1D29817B5C5DCC2C0EDFEBC2D0DBB76C0A61B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>DMC_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Azure.Core, Version=1.53.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Core.1.53.0\lib\net472\Azure.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Identity, Version=1.21.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Identity.1.21.0\lib\netstandard2.0\Azure.Identity.dll</HintPath>
+    </Reference>
+    <Reference Include="Azure.Monitor.OpenTelemetry.Exporter, Version=1.7.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\Azure.Monitor.OpenTelemetry.Exporter.1.7.0\lib\netstandard2.0\Azure.Monitor.OpenTelemetry.Exporter.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
+    </Reference>
+    <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.3, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.3\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.34.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.34.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.5, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.5\lib\net461\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.3.8\lib\net462\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.3.8.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.3.8\lib\net462\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=3.1.0.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.3.1.0\lib\net462\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=3.1.0.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.3.1.0\lib\net462\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.10.0.5\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.10.0.0\lib\net462\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.10.0.0\lib\net462\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.10.0.0\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Diagnostics.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Diagnostics.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.Diagnostics.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.FileProviders.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Hosting.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Hosting.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.Hosting.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.10.0.0\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.10.0.3\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Configuration, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Configuration.10.0.0\lib\net462\Microsoft.Extensions.Logging.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.10.0.3\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=10.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.ConfigurationExtensions.10.0.0\lib\net462\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=10.0.0.3, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.10.0.3\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client, Version=4.83.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.4.83.1\lib\net472\Microsoft.Identity.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Identity.Client.Extensions.Msal, Version=4.83.1.0, Culture=neutral, PublicKeyToken=0a613f4dd989e8ae, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Identity.Client.Extensions.Msal.4.83.1\lib\netstandard2.0\Microsoft.Identity.Client.Extensions.Msal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=8.14.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Abstractions.8.14.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="MQTTnet, Version=3.1.2.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
+      <HintPath>..\packages\MQTTnet.3.1.2\lib\net461\MQTTnet.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=9.6.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.9.6.0\lib\net462\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.1.15.1\lib\net462\OpenTelemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Api.1.15.1\lib\net462\OpenTelemetry.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Api.ProviderBuilderExtensions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Api.ProviderBuilderExtensions.1.15.1\lib\net462\OpenTelemetry.Api.ProviderBuilderExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Exporter.Console, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Exporter.Console.1.15.1\lib\net462\OpenTelemetry.Exporter.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Extensions.Hosting, Version=1.0.0.0, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Extensions.Hosting.1.15.1\lib\net462\OpenTelemetry.Extensions.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Instrumentation.AspNet, Version=1.15.1.919, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Instrumentation.AspNet.1.15.1\lib\net462\OpenTelemetry.Instrumentation.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule, Version=1.15.1.919, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule.1.15.1\lib\net462\OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Instrumentation.Http, Version=1.15.0.900, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Instrumentation.Http.1.15.0\lib\net462\OpenTelemetry.Instrumentation.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.Instrumentation.SqlClient, Version=1.15.0.918, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.Instrumentation.SqlClient.1.15.0\lib\net462\OpenTelemetry.Instrumentation.SqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.PersistentStorage.Abstractions, Version=1.0.2.792, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.PersistentStorage.Abstractions.1.0.2\lib\net462\OpenTelemetry.PersistentStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTelemetry.PersistentStorage.FileSystem, Version=1.0.2.792, Culture=neutral, PublicKeyToken=7bd6737fe5b67e3c, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTelemetry.PersistentStorage.FileSystem.1.0.2\lib\net462\OpenTelemetry.PersistentStorage.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ClientModel, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ClientModel.1.10.0\lib\netstandard2.0\System.ClientModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.ConfigurationManager, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.10.0.5\lib\net462\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.119.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\lib\net46\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.10.0.5\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Formats.Asn1, Version=8.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Formats.Asn1.8.0.1\lib\net462\System.Formats.Asn1.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.10.0.5\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory.Data, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.Data.10.0.3\lib\net462\System.Memory.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.5.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.ProtectedData, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.ProtectedData.4.5.0\lib\net461\System.Security.Cryptography.ProtectedData.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.10.0.3\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.10.0.3\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WinFormAnimation, Version=1.6.0.4, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
+      <HintPath>..\packages\WinFormAnimation.1.6.0.4\lib\net40\WinFormAnimation.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdSharp, Version=0.8.7.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZstdSharp.Port.0.8.7\lib\net462\ZstdSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bakClass.cs" />
+    <Compile Include="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddOrEditCompilation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddOrEditCompilation.Designer.cs">
+      <DependentUpon>FrmAddOrEditCompilation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmADMIN.Designer.cs">
+      <DependentUpon>FrmADMIN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmArchiveFileShoppingCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArchiveFileShoppingCart.Designer.cs">
+      <DependentUpon>FrmArchiveFileShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageSub.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageSub.Designer.cs">
+      <DependentUpon>FrmMessageSub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVisualSignature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVisualSignature.Designer.cs">
+      <DependentUpon>FrmVisualSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPublishedResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPublishedResult.Designer.cs">
+      <DependentUpon>FrmPublishedResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPublishConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPublishConfirm.Designer.cs">
+      <DependentUpon>FrmPublishConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectProject.Designer.cs">
+      <DependentUpon>FrmSelectProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectProjectManager.Designer.cs">
+      <DependentUpon>FrmSelectProjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectFailUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectFailUserList.Designer.cs">
+      <DependentUpon>FrmSelectFailUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStatistics.Designer.cs">
+      <DependentUpon>FrmStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUploadProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUploadProgress.Designer.cs">
+      <DependentUpon>FrmUploadProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmArchiveProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArchiveProgress.Designer.cs">
+      <DependentUpon>FrmArchiveProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLoading.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLoading.designer.cs">
+      <DependentUpon>FrmLoading.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDownloadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDownloadFile.designer.cs">
+      <DependentUpon>FrmDownloadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprovalInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprovalInfo.Designer.cs">
+      <DependentUpon>FrmApprovalInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmApprovalResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApprovalResult.Designer.cs">
+      <DependentUpon>FrmApprovalResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChangePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChangePassword.Designer.cs">
+      <DependentUpon>FrmChangePassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEditChildOrFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEditChildOrFolder.Designer.cs">
+      <DependentUpon>FrmEditChildOrFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddChildOrFolder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddChildOrFolder.Designer.cs">
+      <DependentUpon>FrmAddChildOrFolder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFileRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileRename.Designer.cs">
+      <DependentUpon>FrmFileRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFileShoppingCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFileShoppingCart.Designer.cs">
+      <DependentUpon>FrmFileShoppingCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInitApproval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInitApproval.Designer.cs">
+      <DependentUpon>FrmInitApproval.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKeepRename.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKeepRename.Designer.cs">
+      <DependentUpon>FrmKeepRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageInfo.Designer.cs">
+      <DependentUpon>FrmMessageInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessageManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessageManage.Designer.cs">
+      <DependentUpon>FrmMessageManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMessagePopup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMessagePopup.Designer.cs">
+      <DependentUpon>FrmMessagePopup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMian.Designer.cs">
+      <DependentUpon>FrmMian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPreviewArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPreviewArea.Designer.cs">
+      <DependentUpon>FrmPreviewArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProject.Designer.cs">
+      <DependentUpon>FrmProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProjectArchive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProjectArchive.Designer.cs">
+      <DependentUpon>FrmProjectArchive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProjectInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProjectInfo.Designer.cs">
+      <DependentUpon>FrmProjectInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProjectEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProjectEdit.Designer.cs">
+      <DependentUpon>FrmProjectEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmArchiveManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArchiveManage.Designer.cs">
+      <DependentUpon>FrmArchiveManage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProjectFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProjectFile.Designer.cs">
+      <DependentUpon>FrmProjectFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmProTran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmProTran.Designer.cs">
+      <DependentUpon>FrmProTran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKeepSeeHistoryFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKeepSeeHistoryFile.designer.cs">
+      <DependentUpon>FrmKeepSeeHistoryFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSeeHistoryFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSeeHistoryFile.designer.cs">
+      <DependentUpon>FrmSeeHistoryFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectKeepDir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectKeepDir.Designer.cs">
+      <DependentUpon>FrmSelectKeepDir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectProjectType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectProjectType.Designer.cs">
+      <DependentUpon>FrmSelectProjectType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSelectUserList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSelectUserList.Designer.cs">
+      <DependentUpon>FrmSelectUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSettlementAmount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSettlementAmount.Designer.cs">
+      <DependentUpon>FrmSettlementAmount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSystemSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSystemSettings.Designer.cs">
+      <DependentUpon>FrmSystemSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKeepUploadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKeepUploadFile.Designer.cs">
+      <DependentUpon>FrmKeepUploadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUploadFile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUploadFile.Designer.cs">
+      <DependentUpon>FrmUploadFile.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWebVhsoft.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWebVhsoft.Designer.cs">
+      <DependentUpon>FrmWebVhsoft.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ConfigHelper.cs" />
+    <Compile Include="Helper\DataGridViewHelper.cs" />
+    <Compile Include="Helper\EncodingHelper.cs" />
+    <Compile Include="Helper\HttpHelper.cs" />
+    <Compile Include="Helper\ISplashForm.cs" />
+    <Compile Include="Helper\LoadingDotHelper.cs" />
+    <Compile Include="Helper\LogHelper.cs" />
+    <Compile Include="Helper\MqttClientHelper.cs" />
+    <Compile Include="Helper\SortableBindingList.cs" />
+    <Compile Include="Helper\Splasher.cs" />
+    <Compile Include="Helper\SQLiteDataBase.cs" />
+    <Compile Include="Helper\TreeViewHelper.cs" />
+    <Compile Include="Models\ApiModel\AddKeepProjectAttributeModel.cs" />
+    <Compile Include="Models\ApiModel\AddProjectMajorResultModel.cs" />
+    <Compile Include="Models\ApiModel\ApplyInfoModel.cs" />
+    <Compile Include="Models\ApiModel\ApplyListModel.cs" />
+    <Compile Include="Models\ApiModel\ApprovalInfoModel.cs" />
+    <Compile Include="Models\ApiModel\ApprovalListModel.cs" />
+    <Compile Include="Models\ApiModel\DeptInfoResultModel.cs" />
+    <Compile Include="Models\ApiModel\EditKeepProjectNameModel.cs" />
+    <Compile Include="Models\ApiModel\FileUploadModel.cs" />
+    <Compile Include="Models\ApiModel\GetApprovalProjectStructureAllModel.cs" />
+    <Compile Include="Models\ApiModel\GetCompilationModel.cs" />
+    <Compile Include="Models\ApiModel\GetFileTypeListModel.cs" />
+    <Compile Include="Models\ApiModel\GetKeepProjectDirModel.cs" />
+    <Compile Include="Models\ApiModel\GetKeepProjectTempAttributeModel.cs" />
+    <Compile Include="Models\ApiModel\GetKeepProjectTempNumModel.cs" />
+    <Compile Include="Models\ApiModel\GetKeepProjectTempTechnicalModel.cs" />
+    <Compile Include="Models\ApiModel\GetKeepTechnicalNameListModel.cs" />
+    <Compile Include="Models\ApiModel\GetProjectAttributeModel.cs" />
+    <Compile Include="Models\ApiModel\GetProjectFileListModel.cs" />
+    <Compile Include="Models\ApiModel\GetProjectFileLogListModel.cs" />
+    <Compile Include="Models\ApiModel\GetProjectLevelUserModel.cs" />
+    <Compile Include="Models\ApiModel\GetProjectUserModel.cs" />
+    <Compile Include="Models\ApiModel\GetProTypeListModel.cs" />
+    <Compile Include="Models\ApiModel\GetVersionModel.cs" />
+    <Compile Include="Models\ApiModel\JiSuanFrameModel.cs" />
+    <Compile Include="Models\ApiModel\KeepProjectTempAddDirModel.cs" />
+    <Compile Include="Models\ApiModel\LoginModel.cs" />
+    <Compile Include="Models\ApiModel\LoginResultModel.cs" />
+    <Compile Include="Models\ApiModel\MajorResultModel.cs" />
+    <Compile Include="Models\ApiModel\MyMessageModel.cs" />
+    <Compile Include="Models\ApiModel\PostListItemModel.cs" />
+    <Compile Include="Models\ApiModel\ProjectPropertyResultModel.cs" />
+    <Compile Include="Models\ApiModel\ProjectResultModel.cs" />
+    <Compile Include="Models\ApiModel\ProjectStageResultModel.cs" />
+    <Compile Include="Models\ApiModel\QzMenusItemModel.cs" />
+    <Compile Include="Models\ApiModel\QzUserResultModel.cs" />
+    <Compile Include="Models\ApiModel\SeallistOfZhuzhiModel.cs" />
+    <Compile Include="Models\ApiModel\SelectKeepDeptModel.cs" />
+    <Compile Include="Models\ApiModel\UserMajorsModel.cs" />
+    <Compile Include="Models\ApiModel\UserModel.cs" />
+    <Compile Include="Models\AppGlobalModel.cs" />
+    <Compile Include="Models\DeptInfoModel.cs" />
+    <Compile Include="Models\DirectoryStructureModel.cs" />
+    <Compile Include="Models\KeyValueIntModel.cs" />
+    <Compile Include="Models\KeyValueStringModel.cs" />
+    <Compile Include="Models\MqttConnectModel.cs" />
+    <Compile Include="Models\ProjectPropertyModel.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\SystemSettingsModel.cs" />
+    <Compile Include="Models\UserConfigModel.cs" />
+    <Compile Include="Models\ViewModel\PreviewAreaViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProjectFileTreeViewModel.cs" />
+    <Compile Include="Models\ViewModel\ProjectStageViewModel.cs" />
+    <Compile Include="MyControl\ComCheckBoxList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyControl\ComCheckBoxList.Designer.cs">
+      <DependentUpon>ComCheckBoxList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectHierarchyService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\SystemTempData.cs" />
+    <EmbeddedResource Include="BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddOrEditCompilation.resx">
+      <DependentUpon>FrmAddOrEditCompilation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmADMIN.resx">
+      <DependentUpon>FrmADMIN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmArchiveFileShoppingCart.resx">
+      <DependentUpon>FrmArchiveFileShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageSub.resx">
+      <DependentUpon>FrmMessageSub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVisualSignature.resx">
+      <DependentUpon>FrmVisualSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPublishedResult.resx">
+      <DependentUpon>FrmPublishedResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPublishConfirm.resx">
+      <DependentUpon>FrmPublishConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectProject.resx">
+      <DependentUpon>FrmSelectProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectProjectManager.resx">
+      <DependentUpon>FrmSelectProjectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectFailUserList.resx">
+      <DependentUpon>FrmSelectFailUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStatistics.resx">
+      <DependentUpon>FrmStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUploadProgress.resx">
+      <DependentUpon>FrmUploadProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmArchiveProgress.resx">
+      <DependentUpon>FrmArchiveProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLoading.resx">
+      <DependentUpon>FrmLoading.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDownloadFile.resx">
+      <DependentUpon>FrmDownloadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprovalInfo.resx">
+      <DependentUpon>FrmApprovalInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmApprovalResult.resx">
+      <DependentUpon>FrmApprovalResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmChangePassword.resx">
+      <DependentUpon>FrmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEditChildOrFolder.resx">
+      <DependentUpon>FrmEditChildOrFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddChildOrFolder.resx">
+      <DependentUpon>FrmAddChildOrFolder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFileRename.resx">
+      <DependentUpon>FrmFileRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFileShoppingCart.resx">
+      <DependentUpon>FrmFileShoppingCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInitApproval.resx">
+      <DependentUpon>FrmInitApproval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKeepRename.resx">
+      <DependentUpon>FrmKeepRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageInfo.resx">
+      <DependentUpon>FrmMessageInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessageManage.resx">
+      <DependentUpon>FrmMessageManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMessagePopup.resx">
+      <DependentUpon>FrmMessagePopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMian.resx">
+      <DependentUpon>FrmMian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPreviewArea.resx">
+      <DependentUpon>FrmPreviewArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProject.resx">
+      <DependentUpon>FrmProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProjectArchive.resx">
+      <DependentUpon>FrmProjectArchive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProjectInfo.resx">
+      <DependentUpon>FrmProjectInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProjectEdit.resx">
+      <DependentUpon>FrmProjectEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmArchiveManage.resx">
+      <DependentUpon>FrmArchiveManage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProjectFile.resx">
+      <DependentUpon>FrmProjectFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmProTran.resx">
+      <DependentUpon>FrmProTran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKeepSeeHistoryFile.resx">
+      <DependentUpon>FrmKeepSeeHistoryFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSeeHistoryFile.resx">
+      <DependentUpon>FrmSeeHistoryFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectKeepDir.resx">
+      <DependentUpon>FrmSelectKeepDir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectProjectType.resx">
+      <DependentUpon>FrmSelectProjectType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSelectUserList.resx">
+      <DependentUpon>FrmSelectUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSettlementAmount.resx">
+      <DependentUpon>FrmSettlementAmount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSystemSettings.resx">
+      <DependentUpon>FrmSystemSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKeepUploadFile.resx">
+      <DependentUpon>FrmKeepUploadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUploadFile.resx">
+      <DependentUpon>FrmUploadFile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWebVhsoft.resx">
+      <DependentUpon>FrmWebVhsoft.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="ApplicationInsights.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.ico" />
+    <Content Include="Resources\补充.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\立体按键.png" />
+    <None Include="Resources\Jlpdi_Logo.png" />
+    <None Include="Resources\qyLogin.jpg" />
+    <None Include="Resources\Minimum_Press.png" />
+    <None Include="Resources\Minimum.png" />
+    <None Include="Resources\Maximum_Press.png" />
+    <None Include="Resources\Maximum.png" />
+    <None Include="Resources\LOGO.png" />
+    <None Include="Resources\loginBg.png" />
+    <None Include="Resources\login.png" />
+    <None Include="Resources\Close_Press.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\BKMZ-LOGO-图.png" />
+    <None Include="Resources\BKMZ-LOGO-蓝白底-白字.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PdfiumViewer\PdfiumViewer.csproj">
+      <Project>{438914B6-5D1C-482C-B942-5C0E057EEF6F}</Project>
+      <Name>PdfiumViewer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.3.1.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.3.1.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
+  </Target>
+  <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.119.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.3.1.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.3.1.0\build\Microsoft.ApplicationInsights.Web.targets')" />
+</Project>
